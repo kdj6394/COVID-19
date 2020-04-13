@@ -4,6 +4,21 @@ from lib import sns,folium
 warnings.filterwarnings(action='ignore')
 plt.rc('font',family='Malgun Gothic')
 
+def plots(stay,data1,data2,data3,data4,title:str,x:str,y:str,legend:list):
+    plt.figure(figsize=(15,8))
+    plt.plot(stay,data1)
+    plt.plot(stay,data2)
+    plt.plot(stay,data3,'-')
+    plt.plot(stay,data4,'-o')
+    plt.title(title,fontsize=20)
+    plt.grid()
+    plt.xlabel(x,fontsize=16)
+    plt.ylabel(y,fontsize=16)
+    plt.xticks(fontsize=8,rotation=45)
+    plt.legend(legend,fontsize=10)
+    plt.show()
+
+
 def barplot_h(data, y:str, x:str, str_color:str):
     print('Head',data.head(),sep='\n')
     print('Info',data.info(),sep='\n')
@@ -81,8 +96,8 @@ def folium_polyline_coords(data,x:str,y:str,a:str,b:str,c:str,savepath,savename:
     draw_map.save(join(savepath,savename+'.html'))
 
 if __name__ == '__main__':
-    root = r'C:\Users\82104\Documents\GitHub\COVID-19\data'
-    save_root = r'C:\Users\82104\Documents\GitHub\COVID-19\src\vis_image'
+    # root = r'data(dir)'
+    # save_root = r'vis_image(dir)'
 
     region = pd.read_csv(join(root,"Region.csv"))
     timeprovince = pd.read_csv(join(root,"TimeProvince.csv"))
@@ -105,19 +120,8 @@ if __name__ == '__main__':
     SearchPneumonia=SearchP[1385:]
     SearchCorona=search_trend['coronavirus']
     SearchCoronavirus=SearchCorona[1385:]
-    
-    plt.figure(figsize=(15,8))
-    plt.plot(Search1Year,SearchCold)
-    plt.plot(Search1Year,SearchFlu)
-    plt.plot(Search1Year,SearchPneumonia,'-')
-    plt.plot(Search1Year,SearchCoronavirus,'-o')
-    plt.title('검색추이',fontsize=20)
-    plt.grid()
-    plt.xlabel('날짜',fontsize=16)
-    plt.ylabel('검색량',fontsize=16)
-    plt.xticks(fontsize=8,rotation=45)
-    plt.legend(['감기','발열','폐렴','코로나바이러스'],fontsize=10)
-    plt.show()
+
+    plots(Search1Year,SearchCold,SearchFlu,SearchPneumonia,SearchCoronavirus,'검색추이','날짜','검색량',['감기','발열','폐렴','코로나바이러스'])    
 
 
     case.columns = ['환자번호','시도','구군','집단감염여부','집단감염장소','확진자누적수','위도','경도']
