@@ -23,7 +23,7 @@ def barplot_h(data, y:str, x:str, str_color:str):
     print('Head',data.head(),sep='\n')
     print('Info',data.info(),sep='\n')
     print('Shape',data.shape)
-    plt.figure()
+    plt.figure(figsize=(15,8))
     plt.barh(data[y],data[x]
     ,label = x,align='center',linewidth = 10)
     plt.xlabel(x)
@@ -98,6 +98,8 @@ def folium_polyline_coords(data,x:str,y:str,a:str,b:str,c:str,savepath,savename:
 if __name__ == '__main__':
     # root = r'data(dir)'
     # save_root = r'vis_image(dir)'
+    root = r'C:\Users\82104\Documents\GitHub\COVID-19\data'
+    save_root = r'C:\Users\82104\Documents\GitHub\COVID-19\src\vis_image'
 
     region = pd.read_csv(join(root,"Region.csv"))
     timeprovince = pd.read_csv(join(root,"TimeProvince.csv"))
