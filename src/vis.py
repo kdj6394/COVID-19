@@ -96,10 +96,8 @@ def folium_polyline_coords(data,x:str,y:str,a:str,b:str,c:str,savepath,savename:
     draw_map.save(join(savepath,savename+'.html'))
 
 if __name__ == '__main__':
-    # root = r'data(dir)'
-    # save_root = r'vis_image(dir)'
-    root = r'C:\Users\82104\Documents\GitHub\COVID-19\data'
-    save_root = r'C:\Users\82104\Documents\GitHub\COVID-19\src\vis_image'
+    root = r'data(dir)'
+    save_root = r'vis_image(dir)'
 
     region = pd.read_csv(join(root,"Region.csv"))
     timeprovince = pd.read_csv(join(root,"TimeProvince.csv"))

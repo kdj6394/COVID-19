@@ -69,6 +69,3 @@
  * ![이미지](https://github.com/kdj6394/COVID-19/blob/master/src/vis_image/%EC%84%B1%EB%B3%84%EC%97%90%EB%94%B0%EB%A5%B8%20%EB%82%A0%EC%A7%9C%EB%B3%84%20%EC%82%AC%EB%A7%9D%EC%9E%90%20%EB%88%84%EC%A0%81%EC%88%98.png?raw=true)
 * 확진자 누적수와는 반대의 양상을 보인다. 사망자누적수의 경우 남성이 여성보다 평균 7명정도 높게 나타났다.
 
-### 확지자 상위 5명의 동선
-
-4. requirements 에 필요한부분만 들어가도록 수정?? 잘모르겟다....
