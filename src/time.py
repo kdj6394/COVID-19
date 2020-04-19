@@ -1,7 +1,7 @@
 from lib import np,pd,plt,warnings,datetime
 import scipy.stats
 from scipy.optimize import curve_fit
-from lib import os,glob,join,basename,dirname
+from lib import os,glob,join,basename,dirname,sys
 
 def to_log(data):
     return np.log10(data+1)
@@ -13,7 +13,7 @@ def skew_normal(x,m,a,s,n):
 
 
 if __name__ == '__main__':
-    root = r'data(dir)'
+    root = sys.argv[1]
 
     data = pd.read_csv(join(root,"Time.csv"),index_col=0)
     data.index = pd.to_datetime(data.index)

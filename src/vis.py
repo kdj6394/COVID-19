@@ -1,4 +1,4 @@
-from lib import os,join,basename,dirname
+from lib import os,join,basename,dirname,sys
 from lib import pd,np,plt,warnings
 from lib import sns,folium
 warnings.filterwarnings(action='ignore')
@@ -96,8 +96,9 @@ def folium_polyline_coords(data,x:str,y:str,a:str,b:str,c:str,savepath,savename:
     draw_map.save(join(savepath,savename+'.html'))
 
 if __name__ == '__main__':
-    root = r'data(dir)'
-    save_root = r'vis_image(dir)'
+    root = sys.argv[1]
+    save_root = join(dirname(root),'Vis')
+    os.makedirs(save_root,exist_ok=True)
 
     region = pd.read_csv(join(root,"Region.csv"))
     timeprovince = pd.read_csv(join(root,"TimeProvince.csv"))
