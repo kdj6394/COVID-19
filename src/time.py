@@ -13,7 +13,8 @@ def skew_normal(x,m,a,s,n):
 
 
 if __name__ == '__main__':
-    root = sys.argv[1]
+    # root = sys.argv[1]
+    root = r'C:\Users\82104\Documents\GitHub\COVID-19\data'
 
     data = pd.read_csv(join(root,"Time.csv"),index_col=0)
     data.index = pd.to_datetime(data.index)

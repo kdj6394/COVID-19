@@ -96,8 +96,7 @@ def folium_polyline_coords(data,x:str,y:str,a:str,b:str,c:str,savepath,savename:
     draw_map.save(join(savepath,savename+'.html'))
 
 if __name__ == '__main__':
-    # root = sys.argv[1]
-    root = r'C:\Users\82104\Documents\GitHub\COVID-19\data'
+    root = sys.argv[1]
     save_root = join(dirname(root),'Vis')
     os.makedirs(save_root,exist_ok=True)
 
