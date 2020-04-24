@@ -96,7 +96,8 @@ def folium_polyline_coords(data,x:str,y:str,a:str,b:str,c:str,savepath,savename:
     draw_map.save(join(savepath,savename+'.html'))
 
 if __name__ == '__main__':
-    root = sys.argv[1]
+    # root = sys.argv[1]
+    root = r'C:\Users\82104\Documents\GitHub\COVID-19\data'
     save_root = join(dirname(root),'Vis')
     os.makedirs(save_root,exist_ok=True)
 
@@ -213,42 +214,42 @@ if __name__ == '__main__':
     sns_barplot(data_infection,'접촉자수','연령','연령별 접촉자수')
 
     data_route = patientroute.copy()
-    data_route.columns = ['환자번호','global_num','날짜','시도','구군','위도','경도']
+    data_route.columns = ['환자번호','global_num','날짜','시도','구군','type','위도','경도']
     data_route['환자번호'] = data_route['환자번호'].astype(str)
 
     '''
     가장 많이 돌아다닌 확진자 상위 5명 환자번호 id 
-    1000000013    29
-    2000000003    18
-    2000000006    15
-    1000000014    11
-    1000000009    10
+    3009000014    42
+    1400000021    38
+    3009000013    37
+    1100000069    35
+    3009000003    33
     '''
+    print(data_route['환자번호'].value_counts())
 
-
-    data_route_many = data_route.loc[data_route['환자번호'].str.contains('1000000013|2000000003|2000000006|1000000014|1000000009')]
+    data_route_many = data_route.loc[data_route['환자번호'].str.contains('3009000014|1400000021|3009000013|1100000069|3009000003')]
     
-    data_route_max = data_route_many.loc[data_route_many['환자번호'] == '1000000013']
+    data_route_max = data_route_many.loc[data_route_many['환자번호'] == '3009000014']
     data_route_max = data_route_max.reset_index(drop=True)
     geo_data_1st = data_route_max
     folium_polyline_coords(geo_data_1st,'위도','경도','날짜','시도','구군',save_root,'1순위','red')
     
-    data_route_2nd = data_route_many.loc[data_route_many['환자번호'] == '2000000003']
+    data_route_2nd = data_route_many.loc[data_route_many['환자번호'] == '1400000021']
     data_route_2nd = data_route_2nd.reset_index(drop=True)
     geo_data_2nd = data_route_2nd
     folium_polyline_coords(geo_data_2nd,'위도','경도','날짜','시도','구군',save_root,'2순위','red')
 
-    data_route_3rd = data_route_many.loc[data_route_many['환자번호'] == '2000000006']
+    data_route_3rd = data_route_many.loc[data_route_many['환자번호'] == '3009000013']
     data_route_3rd = data_route_3rd.reset_index(drop=True)
     geo_data_3rd = data_route_3rd
     folium_polyline_coords(geo_data_3rd,'위도','경도','날짜','시도','구군',save_root,'3순위','red')
 
-    data_route_4th = data_route_many.loc[data_route_many['환자번호'] == '1000000014']
+    data_route_4th = data_route_many.loc[data_route_many['환자번호'] == '1100000069']
     data_route_4th = data_route_4th.reset_index(drop=True)
     geo_data_4th = data_route_4th
     folium_polyline_coords(geo_data_4th,'위도','경도','날짜','시도','구군',save_root,'4순위','red')
 
-    data_route_5th = data_route_many.loc[data_route_many['환자번호'] == '1000000009']
+    data_route_5th = data_route_many.loc[data_route_many['환자번호'] == '3009000003']
     data_route_5th = data_route_5th.reset_index(drop=True)
     geo_data_5th = data_route_5th
     folium_polyline_coords(geo_data_5th,'위도','경도','날짜','시도','구군',save_root,'5순위','red')
@@ -260,15 +261,15 @@ if __name__ == '__main__':
 
     for n in geo_data.index:
         # 1위:파란색, 2위:빨간색, 3위:초록색, 4위:오렌지색, 5위:검정색
-        if geo_data.loc[n, '환자번호'] == '1000000013':
+        if geo_data.loc[n, '환자번호'] == '3009000014':
             icon_color = 'blue'
-        elif geo_data.loc[n, '환자번호'] == '2000000003':
+        elif geo_data.loc[n, '환자번호'] == '1400000021':
             icon_color = 'red'
-        elif geo_data.loc[n, '환자번호'] == '2000000006':
+        elif geo_data.loc[n, '환자번호'] == '3009000013':
             icon_color = 'green'
-        elif geo_data.loc[n, '환자번호'] == '1000000014':
+        elif geo_data.loc[n, '환자번호'] == '1100000069':
             icon_color = 'orange'
-        elif geo_data.loc[n, '환자번호'] == '1000000009':
+        elif geo_data.loc[n, '환자번호'] == '3009000003':
             icon_color = 'black'
 
         folium.CircleMarker(location=[geo_data.loc[n, '위도'], geo_data.loc[n, '경도']],
