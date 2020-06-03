@@ -6,8 +6,10 @@
 특히나 전세계적으로 유행하며 확산및 감소하는 추세에 데이터를 구할수있어서 시각화를 시도한다.
 
 
-## 데이터출처
-https://dacon.io/competitions/official/235590/overview/
+## 데이터출처&License
+[dacon](https://dacon.io/competitions/official/235590/overview/)
+
+CC BY-NC-SA 4.0
 
 ## requirements
 * pip install -r requirements.txt
